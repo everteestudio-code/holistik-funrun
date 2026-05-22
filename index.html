@@ -1,36 +1,586 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Holistik Fest Fun Run</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holistik Fest Fun Run 2026</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <script type="module" src="firebase.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f8fafc;
+    }
+  </style>
 </head>
+<body class="bg-slate-100">
 
-<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6">
+  <div class="min-h-screen">
 
-  <div class="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full text-center">
+    <div class="bg-gradient-to-r from-blue-600 via-pink-500 to-orange-500 h-2"></div>
 
-    <h1 class="text-4xl font-black text-slate-800 mb-3">
-      HOLISTIK FEST
-    </h1>
+    <div class="max-w-7xl mx-auto p-6">
 
-    <p class="text-slate-500 mb-8">
-      Fun Run Registration System
-    </p>
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-8">
 
-    <button
-      onclick="loginGoogle()"
-      class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold text-lg"
-    >
-      Login Dengan Google
-    </button>
+        <div class="bg-gradient-to-r from-blue-600 to-orange-500 p-10 text-white">
+
+          <h1 class="text-5xl font-black mb-3">
+            HOLISTIK FEST FUN RUN 2026
+          </h1>
+
+          <p class="text-lg text-white/90">
+            Sistem Pendaftaran Peserta + Admin + QR Scanner
+          </p>
+
+        </div>
+
+        <div class="p-8">
+
+          <div id="loginSection" class="text-center py-16">
+
+            <div class="text-7xl text-blue-600 mb-6">
+              <i class="fa-brands fa-google"></i>
+            </div>
+
+            <h2 class="text-3xl font-black text-slate-800 mb-4">
+              LOGIN PESERTA
+            </h2>
+
+            <p class="text-slate-500 mb-8">
+              Login menggunakan akun Google
+            </p>
+
+            <button
+              onclick="loginGoogle()"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg"
+            >
+              Login Dengan Google
+            </button>
+
+          </div>
+
+          <div id="participantSection" class="hidden">
+
+            <div class="flex justify-between items-center mb-8">
+
+              <div>
+                <h2 class="text-3xl font-black text-slate-800">
+                  Dashboard Peserta
+                </h2>
+
+                <p id="userEmail" class="text-slate-500 mt-2"></p>
+              </div>
+
+              <button
+                onclick="logoutUser()"
+                class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold"
+              >
+                Logout
+              </button>
+
+            </div>
+
+            <form onsubmit="saveRegistration(event)" class="space-y-5">
+
+              <input
+                type="text"
+                id="fullname"
+                placeholder="Nama Lengkap"
+                required
+                class="w-full p-4 rounded-2xl border"
+              >
+
+              <input
+                type="number"
+                id="age"
+                placeholder="Umur"
+                required
+                class="w-full p-4 rounded-2xl border"
+              >
+
+              <input
+                type="text"
+                id="school"
+                placeholder="Asal Sekolah"
+                required
+                class="w-full p-4 rounded-2xl border"
+              >
+
+              <input
+                type="text"
+                id="phone"
+                placeholder="Nomor WhatsApp"
+                required
+                class="w-full p-4 rounded-2xl border"
+              >
+
+              <select
+                id="jersey"
+                class="w-full p-4 rounded-2xl border"
+              >
+                <option value="S">Jersey S</option>
+                <option value="M">Jersey M</option>
+                <option value="L">Jersey L</option>
+                <option value="XL">Jersey XL</option>
+                <option value="XXL">Jersey XXL</option>
+              </select>
+
+              <div class="bg-orange-50 border border-orange-200 p-6 rounded-2xl">
+
+                <h3 class="font-black text-orange-700 text-xl mb-3">
+                  Pembayaran
+                </h3>
+
+                <p class="text-slate-600 mb-2">
+                  Transfer ke:
+                </p>
+
+                <div class="text-2xl font-black text-slate-800 mb-2">
+                  BANK JATENG
+                </div>
+
+                <div class="text-xl font-bold mb-4">
+                  3020269366
+                </div>
+
+                <div class="mb-5 text-sm text-slate-500">
+                  a.n. DHEVITA ERVRIANA
+                </div>
+
+                <a
+                  href="https://wa.me/6282135832356"
+                  target="_blank"
+                  class="block text-center bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-bold"
+                >
+                  Kirim Bukti Transfer via WhatsApp
+                </a>
+
+              </div>
+
+              <button
+                class="w-full bg-gradient-to-r from-blue-600 to-orange-500 text-white py-4 rounded-2xl font-black text-lg"
+              >
+                Simpan Pendaftaran
+              </button>
+
+            </form>
+
+            <div id="ticketCard" class="hidden mt-8 bg-slate-50 border rounded-3xl p-8">
+
+              <h3 class="text-2xl font-black mb-5">
+                Tiket Peserta
+              </h3>
+
+              <div class="space-y-3 mb-5">
+
+                <div>
+                  <strong>Status:</strong>
+                  <span id="statusText"></span>
+                </div>
+
+                <div>
+                  <strong>Nomor BIB:</strong>
+                  <span id="bibText"></span>
+                </div>
+
+                <div>
+                  <strong>Nama:</strong>
+                  <span id="ticketName"></span>
+                </div>
+
+              </div>
+
+              <div id="qrcode"></div>
+
+            </div>
+
+          </div>
+
+          <div id="adminSection" class="hidden">
+
+            <div class="flex justify-between items-center mb-8">
+
+              <div>
+                <h2 class="text-4xl font-black text-slate-800">
+                  ADMIN PANEL
+                </h2>
+
+                <p class="text-slate-500 mt-2">
+                  Approval peserta dan scan QR
+                </p>
+              </div>
+
+              <button
+                onclick="logoutUser()"
+                class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold"
+              >
+                Logout
+              </button>
+
+            </div>
+
+            <div class="overflow-auto bg-white border rounded-3xl mb-10">
+
+              <table class="w-full">
+
+                <thead class="bg-slate-100">
+                  <tr>
+                    <th class="p-4 text-left">Nama</th>
+                    <th class="p-4 text-left">Sekolah</th>
+                    <th class="p-4 text-left">Jersey</th>
+                    <th class="p-4 text-left">Status</th>
+                    <th class="p-4 text-left">BIB</th>
+                    <th class="p-4 text-left">Aksi</th>
+                  </tr>
+                </thead>
+
+                <tbody id="participantTable"></tbody>
+
+              </table>
+
+            </div>
+
+            <div class="bg-slate-50 border rounded-3xl p-8">
+
+              <h3 class="text-2xl font-black mb-5">
+                Scan QR Peserta
+              </h3>
+
+              <div id="reader"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAJSAgwdl4bGraCzrdTRh8dHsDCx66f47M",
+
+  authDomain: "holistik-funrun-59537.firebaseapp.com",
+
+  projectId: "holistik-funrun-59537",
+
+  storageBucket: "holistik-funrun-59537.firebasestorage.app",
+
+  messagingSenderId: "240587003368",
+
+  appId: "1:240587003368:web:920208cfcf4a8a97d4c05d"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const provider = new GoogleAuthProvider();
+
+const adminEmails = [
+  "everteestudio@gmail.com"
+];
+
+window.loginGoogle = async function () {
+
+  try {
+
+    await signInWithPopup(auth, provider);
+
+  } catch (error) {
+
+    alert(error.message);
+
+  }
+
+};
+
+window.logoutUser = async function () {
+
+  await signOut(auth);
+
+  location.reload();
+
+};
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+
+    document.getElementById("loginSection").classList.remove("hidden");
+
+    document.getElementById("participantSection").classList.add("hidden");
+
+    document.getElementById("adminSection").classList.add("hidden");
+
+    return;
+
+  }
+
+  document.getElementById("loginSection").classList.add("hidden");
+
+  if (adminEmails.includes(user.email)) {
+
+    document.getElementById("adminSection").classList.remove("hidden");
+
+    loadParticipants();
+
+    startQRScanner();
+
+  } else {
+
+    document.getElementById("participantSection").classList.remove("hidden");
+
+    document.getElementById("userEmail").innerText = user.email;
+
+    loadMyTicket();
+
+  }
+
+});
+
+window.saveRegistration = async function (event) {
+
+  event.preventDefault();
+
+  const user = auth.currentUser;
+
+  const checkQuery = query(
+    collection(db, "participants"),
+    where("uid", "==", user.uid)
+  );
+
+  const checkSnapshot = await getDocs(checkQuery);
+
+  if (!checkSnapshot.empty) {
+
+    alert("Anda sudah mendaftar");
+
+    return;
+
+  }
+
+  await addDoc(collection(db, "participants"), {
+
+    uid: user.uid,
+    email: user.email,
+
+    name: document.getElementById("fullname").value,
+
+    age: document.getElementById("age").value,
+
+    school: document.getElementById("school").value,
+
+    phone: document.getElementById("phone").value,
+
+    jersey: document.getElementById("jersey").value,
+
+    paymentStatus: "pending",
+
+    bibNumber: "",
+
+    jerseyTaken: false,
+
+    createdAt: new Date()
+
+  });
+
+  alert("Pendaftaran berhasil disimpan");
+
+  location.reload();
+
+};
+
+async function loadMyTicket() {
+
+  const user = auth.currentUser;
+
+  const q = query(
+    collection(db, "participants"),
+    where("uid", "==", user.uid)
+  );
+
+  const snapshot = await getDocs(q);
+
+  snapshot.forEach((docData) => {
+
+    const data = docData.data();
+
+    document.getElementById("ticketCard").classList.remove("hidden");
+
+    document.getElementById("statusText").innerText = data.paymentStatus;
+
+    document.getElementById("bibText").innerText = data.bibNumber || "Menunggu Approval";
+
+    document.getElementById("ticketName").innerText = data.name;
+
+    if (data.bibNumber) {
+
+      document.getElementById("qrcode").innerHTML = "";
+
+      new QRCode(document.getElementById("qrcode"), {
+        text: data.bibNumber,
+        width: 200,
+        height: 200
+      });
+
+    }
+
+  });
+
+}
+
+async function loadParticipants() {
+
+  const tbody = document.getElementById("participantTable");
+
+  tbody.innerHTML = "";
+
+  const snapshot = await getDocs(collection(db, "participants"));
+
+  let counter = 1;
+
+  snapshot.forEach((participant) => {
+
+    const data = participant.data();
+
+    const row = `
+
+      <tr class="border-b">
+
+        <td class="p-4">${data.name}</td>
+
+        <td class="p-4">${data.school}</td>
+
+        <td class="p-4">${data.jersey}</td>
+
+        <td class="p-4">${data.paymentStatus}</td>
+
+        <td class="p-4">${data.bibNumber || '-'} </td>
+
+        <td class="p-4 flex gap-2">
+
+          <button
+            onclick="approveParticipant('${participant.id}', ${counter})"
+            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl"
+          >
+            Approve
+          </button>
+
+          <button
+            onclick="markJerseyTaken('${participant.id}')"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl"
+          >
+            Jersey
+          </button>
+
+        </td>
+
+      </tr>
+
+    `;
+
+    tbody.innerHTML += row;
+
+    counter++;
+
+  });
+
+}
+
+window.approveParticipant = async function (id, number) {
+
+  const bib = `RUN-${String(number).padStart(4, '0')}`;
+
+  await updateDoc(doc(db, "participants", id), {
+
+    paymentStatus: "approved",
+
+    bibNumber: bib
+
+  });
+
+  alert("Peserta berhasil diapprove");
+
+  loadParticipants();
+
+};
+
+window.markJerseyTaken = async function (id) {
+
+  await updateDoc(doc(db, "participants", id), {
+
+    jerseyTaken: true
+
+  });
+
+  alert("Jersey sudah diambil");
+
+};
+
+function startQRScanner() {
+
+  if (!document.getElementById("reader")) return;
+
+  function onScanSuccess(decodedText) {
+
+    alert("QR Peserta: " + decodedText);
+
+  }
+
+  const scanner = new Html5QrcodeScanner(
+    "reader",
+    {
+      fps: 10,
+      qrbox: 250
+    }
+  );
+
+  scanner.render(onScanSuccess);
+
+}
+
+</script>
 
 </body>
 </html>
