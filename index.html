@@ -5,582 +5,912 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Holistik Fest Fun Run 2026</title>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  
+  <!-- QR Code -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
+  
+  <!-- QR Scanner -->
   <script src="https://unpkg.com/html5-qrcode"></script>
 
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #f8fafc;
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            primary: '#2563eb',
+            secondary: '#f97316',
+          }
+        }
+      }
     }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.8); }
+    }
+    .pulse-glow { animation: pulse-glow 2s infinite; }
+    
+    /* Glass effect */
+    .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+    .dark .glass { background: rgba(15, 23, 42, 0.7); }
+    
+    /* Loader */
+    .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    
+    /* Toast */
+    .toast { transform: translateX(100%); transition: transform 0.3s ease-out; }
+    .toast.show { transform: translateX(0); }
   </style>
 </head>
-<body class="bg-slate-100">
+<body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-white/80 dark:bg-slate-900/80 z-50 flex items-center justify-center hidden">
+    <div class="text-center">
+      <div class="loader mx-auto mb-4"></div>
+      <p class="text-slate-600 dark:text-slate-300 font-medium">Memuat...</p>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+  <!-- Top Bar -->
+  <div class="bg-gradient-to-r from-blue-600 via-pink-500 to-orange-500 h-1.5"></div>
 
   <div class="min-h-screen">
+    <div class="max-w-7xl mx-auto p-4 md:p-6">
 
-    <div class="bg-gradient-to-r from-blue-600 via-pink-500 to-orange-500 h-2"></div>
-
-    <div class="max-w-7xl mx-auto p-6">
-
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-8">
-
-        <div class="bg-gradient-to-r from-blue-600 to-orange-500 p-10 text-white">
-
-          <h1 class="text-5xl font-black mb-3">
-            HOLISTIK FEST FUN RUN 2026
-          </h1>
-
-          <p class="text-lg text-white/90">
-            Sistem Pendaftaran Peserta + Admin + QR Scanner
-          </p>
-
+      <!-- Header Card -->
+      <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden mb-6 animate-fade-in">
+        <div class="bg-gradient-to-r from-blue-600 to-orange-500 p-6 md:p-10 text-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+          
+          <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h1 class="text-3xl md:text-5xl font-black mb-2 tracking-tight">
+                <i class="fa-solid fa-person-running mr-3"></i>HOLISTIK FEST FUN RUN 2026
+              </h1>
+              <p class="text-white/90 text-sm md:text-lg">
+                Sistem Pendaftaran & Manajemen Peserta
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button onclick="toggleDarkMode()" class="bg-white/20 hover:bg-white/30 text-white p-3 rounded-xl transition-all">
+                <i id="darkModeIcon" class="fa-solid fa-moon"></i>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="p-8">
+        <div class="p-4 md:p-8">
 
-          <div id="loginSection" class="text-center py-16">
-
-            <div class="text-7xl text-blue-600 mb-6">
-              <i class="fa-brands fa-google"></i>
+          <!-- ========== LOGIN SECTION ========== -->
+          <div id="loginSection" class="text-center py-12 md:py-16 animate-fade-in">
+            <div class="max-w-md mx-auto">
+              <div class="w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-brands fa-google text-4xl text-blue-600"></i>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white mb-3">
+                Selamat Datang!
+              </h2>
+              <p class="text-slate-500 dark:text-slate-400 mb-8">
+                Login menggunakan akun Google untuk mendaftar atau mengakses panel admin
+              </p>
+              <button onclick="loginGoogle()" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:shadow-lg hover:scale-105 flex items-center justify-center gap-3 mx-auto">
+                <i class="fa-brands fa-google"></i>
+                Login Dengan Google
+              </button>
+              <p class="text-xs text-slate-400 mt-6">
+                Hanya email tertentu yang dapat mengakses panel admin
+              </p>
             </div>
-
-            <h2 class="text-3xl font-black text-slate-800 mb-4">
-              LOGIN PESERTA
-            </h2>
-
-            <p class="text-slate-500 mb-8">
-              Login menggunakan akun Google
-            </p>
-
-            <button
-              onclick="loginGoogle()"
-              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg"
-            >
-              Login Dengan Google
-            </button>
-
           </div>
 
-          <div id="participantSection" class="hidden">
-
-            <div class="flex justify-between items-center mb-8">
-
+          <!-- ========== PARTICIPANT SECTION ========== -->
+          <div id="participantSection" class="hidden animate-fade-in">
+            
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
               <div>
-                <h2 class="text-3xl font-black text-slate-800">
+                <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white">
                   Dashboard Peserta
                 </h2>
-
-                <p id="userEmail" class="text-slate-500 mt-2"></p>
+                <p id="userEmail" class="text-slate-500 dark:text-slate-400 mt-1 text-sm"></p>
               </div>
-
-              <button
-                onclick="logoutUser()"
-                class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold"
-              >
-                Logout
+              <button onclick="logoutUser()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold transition-all hover:shadow-lg flex items-center gap-2">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
               </button>
-
             </div>
 
-            <form onsubmit="saveRegistration(event)" class="space-y-5">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-ticket text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Status Pendaftaran</p>
+                    <p id="statStatus" class="text-lg font-bold text-slate-800 dark:text-white">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-2xl p-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-shirt text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Ukuran Jersey</p>
+                    <p id="statJersey" class="text-lg font-bold text-slate-800 dark:text-white">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-hashtag text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Nomor BIB</p>
+                    <p id="statBib" class="text-lg font-bold text-slate-800 dark:text-white">-</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              <input
-                type="text"
-                id="fullname"
-                placeholder="Nama Lengkap"
-                required
-                class="w-full p-4 rounded-2xl border"
-              >
-
-              <input
-                type="number"
-                id="age"
-                placeholder="Umur"
-                required
-                class="w-full p-4 rounded-2xl border"
-              >
-
-              <input
-                type="text"
-                id="school"
-                placeholder="Asal Sekolah"
-                required
-                class="w-full p-4 rounded-2xl border"
-              >
-
-              <input
-                type="text"
-                id="phone"
-                placeholder="Nomor WhatsApp"
-                required
-                class="w-full p-4 rounded-2xl border"
-              >
-
-              <select
-                id="jersey"
-                class="w-full p-4 rounded-2xl border"
-              >
-                <option value="S">Jersey S</option>
-                <option value="M">Jersey M</option>
-                <option value="L">Jersey L</option>
-                <option value="XL">Jersey XL</option>
-                <option value="XXL">Jersey XXL</option>
-              </select>
-
-              <div class="bg-orange-50 border border-orange-200 p-6 rounded-2xl">
-
-                <h3 class="font-black text-orange-700 text-xl mb-3">
-                  Pembayaran
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              
+              <!-- Registration Form -->
+              <div id="registrationForm" class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-3xl p-6 md:p-8">
+                <h3 class="text-xl font-black text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+                  <i class="fa-solid fa-user-pen text-blue-600"></i> Form Pendaftaran
                 </h3>
+                
+                <form onsubmit="saveRegistration(event)" class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Nama Lengkap</label>
+                      <input type="text" id="fullname" placeholder="Masukkan nama lengkap" required
+                        class="w-full p-4 rounded-2xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Umur</label>
+                      <input type="number" id="age" placeholder="Umur" required min="10" max="100"
+                        class="w-full p-4 rounded-2xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                    </div>
+                  </div>
 
-                <p class="text-slate-600 mb-2">
-                  Transfer ke:
-                </p>
+                  <div>
+                    <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Asal Sekolah</label>
+                    <input type="text" id="school" placeholder="Nama sekolah" required
+                      class="w-full p-4 rounded-2xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                  </div>
 
-                <div class="text-2xl font-black text-slate-800 mb-2">
-                  BANK JATENG
-                </div>
+                  <div>
+                    <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Nomor WhatsApp</label>
+                    <input type="tel" id="phone" placeholder="08xxxxxxxxxx" required pattern="[0-9]{10,13}"
+                      class="w-full p-4 rounded-2xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                  </div>
 
-                <div class="text-xl font-bold mb-4">
-                  3020269366
-                </div>
+                  <div>
+                    <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Ukuran Jersey</label>
+                    <select id="jersey" class="w-full p-4 rounded-2xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                      <option value="S">Jersey S (Small)</option>
+                      <option value="M">Jersey M (Medium)</option>
+                      <option value="L" selected>Jersey L (Large)</option>
+                      <option value="XL">Jersey XL (Extra Large)</option>
+                      <option value="XXL">Jersey XXL (Double XL)</option>
+                    </select>
+                  </div>
 
-                <div class="mb-5 text-sm text-slate-500">
-                  a.n. DHEVITA ERVRIANA
-                </div>
+                  <!-- Payment Section -->
+                  <div class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800 p-6 rounded-2xl mt-6">
+                    <h4 class="font-black text-orange-700 dark:text-orange-400 text-lg mb-4 flex items-center gap-2">
+                      <i class="fa-solid fa-money-bill-wave"></i> Pembayaran
+                    </h4>
+                    
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 mb-4 border border-orange-100 dark:border-orange-800">
+                      <p class="text-sm text-slate-500 dark:text-slate-400 mb-2">Transfer ke:</p>
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-black text-slate-800 dark:text-white">BANK JATENG</span>
+                        <button onclick="copyToClipboard('3020269366')" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                          <i class="fa-regular fa-copy"></i> Salin
+                        </button>
+                      </div>
+                      <div class="text-2xl font-black text-slate-800 dark:text-white tracking-wider mb-1">3020269366</div>
+                      <p class="text-sm text-slate-500 dark:text-slate-400">a.n. DHEVITA ERVRIANA</p>
+                    </div>
 
-                <a
-                  href="https://wa.me/6282135832356"
-                  target="_blank"
-                  class="block text-center bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-bold"
-                >
-                  Kirim Bukti Transfer via WhatsApp
-                </a>
+                    <a href="https://wa.me/6282135832356" target="_blank"
+                      class="block text-center bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold transition-all hover:shadow-lg flex items-center justify-center gap-2">
+                      <i class="fa-brands fa-whatsapp text-xl"></i>
+                      Kirim Bukti Transfer via WhatsApp
+                    </a>
+                  </div>
 
+                  <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white py-4 rounded-2xl font-black text-lg transition-all hover:shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-floppy-disk"></i> Simpan Pendaftaran
+                  </button>
+                </form>
               </div>
 
-              <button
-                class="w-full bg-gradient-to-r from-blue-600 to-orange-500 text-white py-4 rounded-2xl font-black text-lg"
-              >
-                Simpan Pendaftaran
-              </button>
+              <!-- Ticket Card -->
+              <div id="ticketCard" class="hidden">
+                <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-3xl p-6 md:p-8 relative overflow-hidden">
+                  <!-- Watermark -->
+                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl text-slate-100 dark:text-slate-600/20 font-black rotate-[-15deg] pointer-events-none select-none">
+                    HOLISTIK
+                  </div>
+                  
+                  <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                      <h3 class="text-xl font-black text-slate-800 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-orange-500"></i> Tiket Digital
+                      </h3>
+                      <span id="ticketBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase">-</span>
+                    </div>
 
-            </form>
+                    <div class="space-y-4 mb-6">
+                      <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Nama</span>
+                        <span id="ticketName" class="font-bold text-slate-800 dark:text-white">-</span>
+                      </div>
+                      <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Sekolah</span>
+                        <span id="ticketSchool" class="font-bold text-slate-800 dark:text-white">-</span>
+                      </div>
+                      <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Jersey</span>
+                        <span id="ticketJersey" class="font-bold text-slate-800 dark:text-white">-</span>
+                      </div>
+                      <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Status Jersey</span>
+                        <span id="ticketJerseyStatus" class="font-bold text-slate-800 dark:text-white">-</span>
+                      </div>
+                      <div class="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                        <span class="text-blue-600 dark:text-blue-400 text-sm font-bold">Nomor BIB</span>
+                        <span id="ticketBib" class="text-2xl font-black text-blue-600 dark:text-blue-400">-</span>
+                      </div>
+                    </div>
 
-            <div id="ticketCard" class="hidden mt-8 bg-slate-50 border rounded-3xl p-8">
-
-              <h3 class="text-2xl font-black mb-5">
-                Tiket Peserta
-              </h3>
-
-              <div class="space-y-3 mb-5">
-
-                <div>
-                  <strong>Status:</strong>
-                  <span id="statusText"></span>
+                    <!-- QR Code -->
+                    <div class="flex flex-col items-center">
+                      <div id="qrcode" class="bg-white p-4 rounded-2xl shadow-lg"></div>
+                      <p class="text-xs text-slate-400 mt-3 text-center">
+                        Tunjukkan QR code ini saat check-in
+                      </p>
+                    </div>
+                  </div>
                 </div>
-
-                <div>
-                  <strong>Nomor BIB:</strong>
-                  <span id="bibText"></span>
-                </div>
-
-                <div>
-                  <strong>Nama:</strong>
-                  <span id="ticketName"></span>
-                </div>
-
               </div>
-
-              <div id="qrcode"></div>
-
             </div>
-
           </div>
 
-          <div id="adminSection" class="hidden">
-
-            <div class="flex justify-between items-center mb-8">
-
+          <!-- ========== ADMIN SECTION ========== -->
+          <div id="adminSection" class="hidden animate-fade-in">
+            
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
               <div>
-                <h2 class="text-4xl font-black text-slate-800">
-                  ADMIN PANEL
+                <h2 class="text-2xl md:text-4xl font-black text-slate-800 dark:text-white flex items-center gap-3">
+                  <i class="fa-solid fa-shield-halved text-blue-600"></i> ADMIN PANEL
                 </h2>
-
-                <p class="text-slate-500 mt-2">
-                  Approval peserta dan scan QR
+                <p class="text-slate-500 dark:text-slate-400 mt-1">
+                  Manajemen peserta, approval & scan QR
                 </p>
               </div>
-
-              <button
-                onclick="logoutUser()"
-                class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold"
-              >
-                Logout
-              </button>
-
+              <div class="flex gap-3">
+                <button onclick="exportToCSV()" class="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-2xl font-bold transition-all hover:shadow-lg flex items-center gap-2">
+                  <i class="fa-solid fa-file-csv"></i> Export CSV
+                </button>
+                <button onclick="logoutUser()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-bold transition-all hover:shadow-lg flex items-center gap-2">
+                  <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+              </div>
             </div>
 
-            <div class="overflow-auto bg-white border rounded-3xl mb-10">
-
-              <table class="w-full">
-
-                <thead class="bg-slate-100">
-                  <tr>
-                    <th class="p-4 text-left">Nama</th>
-                    <th class="p-4 text-left">Sekolah</th>
-                    <th class="p-4 text-left">Jersey</th>
-                    <th class="p-4 text-left">Status</th>
-                    <th class="p-4 text-left">BIB</th>
-                    <th class="p-4 text-left">Aksi</th>
-                  </tr>
-                </thead>
-
-                <tbody id="participantTable"></tbody>
-
-              </table>
-
+            <!-- Stats Dashboard -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-2xl p-5">
+                <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-3">
+                  <i class="fa-solid fa-users text-blue-600"></i>
+                </div>
+                <p class="text-2xl font-black text-slate-800 dark:text-white" id="adminTotal">0</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Total Peserta</p>
+              </div>
+              <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-2xl p-5">
+                <div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center mb-3">
+                  <i class="fa-solid fa-clock text-yellow-600"></i>
+                </div>
+                <p class="text-2xl font-black text-slate-800 dark:text-white" id="adminPending">0</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Pending</p>
+              </div>
+              <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-2xl p-5">
+                <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-3">
+                  <i class="fa-solid fa-check-circle text-green-600"></i>
+                </div>
+                <p class="text-2xl font-black text-slate-800 dark:text-white" id="adminApproved">0</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Approved</p>
+              </div>
+              <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-2xl p-5">
+                <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-3">
+                  <i class="fa-solid fa-shirt text-orange-600"></i>
+                </div>
+                <p class="text-2xl font-black text-slate-800 dark:text-white" id="adminJersey">0</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Jersey Diambil</p>
+              </div>
             </div>
 
-            <div class="bg-slate-50 border rounded-3xl p-8">
-
-              <h3 class="text-2xl font-black mb-5">
-                Scan QR Peserta
-              </h3>
-
-              <div id="reader"></div>
-
+            <!-- Search & Filter -->
+            <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-2xl p-4 mb-6 flex flex-col md:flex-row gap-4">
+              <div class="flex-1 relative">
+                <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="searchInput" placeholder="Cari nama, sekolah, atau BIB..." oninput="filterParticipants()"
+                  class="w-full pl-12 pr-4 py-3 rounded-xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+              </div>
+              <select id="filterStatus" onchange="filterParticipants()" class="px-4 py-3 rounded-xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                <option value="all">Semua Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+              </select>
+              <select id="filterJersey" onchange="filterParticipants()" class="px-4 py-3 rounded-xl border dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                <option value="all">Semua Jersey</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
             </div>
 
+            <!-- Participants Table -->
+            <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-3xl overflow-hidden mb-8">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead class="bg-slate-100 dark:bg-slate-800">
+                    <tr>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">No</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Nama</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sekolah</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Kontak</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Jersey</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">BIB</th>
+                      <th class="p-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="participantTable" class="divide-y divide-slate-100 dark:divide-slate-700"></tbody>
+                </table>
+              </div>
+              <div id="emptyState" class="hidden text-center py-12">
+                <i class="fa-solid fa-inbox text-4xl text-slate-300 dark:text-slate-600 mb-3"></i>
+                <p class="text-slate-500 dark:text-slate-400">Tidak ada data peserta</p>
+              </div>
+            </div>
+
+            <!-- QR Scanner Section -->
+            <div class="bg-white dark:bg-slate-700/50 border dark:border-slate-600 rounded-3xl p-6 md:p-8">
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                <div>
+                  <h3 class="text-xl font-black text-slate-800 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode text-blue-600"></i> Scan QR Peserta
+                  </h3>
+                  <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                    Scan QR code peserta untuk verifikasi check-in
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="startQRScanner()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold text-sm transition-all">
+                    <i class="fa-solid fa-play mr-1"></i> Mulai Scan
+                  </button>
+                  <button onclick="stopQRScanner()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl font-bold text-sm transition-all">
+                    <i class="fa-solid fa-stop mr-1"></i> Stop
+                  </button>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div id="reader" class="rounded-2xl overflow-hidden bg-slate-900 min-h-[300px] flex items-center justify-center">
+                  <p class="text-slate-500 text-sm">Klik "Mulai Scan" untuk memulai</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6">
+                  <h4 class="font-bold text-slate-800 dark:text-white mb-4">Hasil Scan Terakhir</h4>
+                  <div id="scanResult" class="space-y-3">
+                    <p class="text-slate-400 text-sm italic">Belum ada scan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
+      </div>
 
+      <!-- Footer -->
+      <div class="text-center text-slate-400 dark:text-slate-600 text-sm pb-8">
+        <p> Holistik Fest Fun Run 2026. All rights reserved.</p>
       </div>
 
     </div>
-
   </div>
 
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged
+  getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  where,
-  doc,
-  updateDoc
+  getFirestore, collection, addDoc, getDocs, query, where, doc, updateDoc, orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
   apiKey: "AIzaSyAJSAgwdl4bGraCzrdTRh8dHsDCx66f47M",
-
   authDomain: "holistik-funrun-59537.firebaseapp.com",
-
   projectId: "holistik-funrun-59537",
-
   storageBucket: "holistik-funrun-59537.firebasestorage.app",
-
   messagingSenderId: "240587003368",
-
   appId: "1:240587003368:web:920208cfcf4a8a97d4c05d"
-
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const db = getFirestore(app);
-
 const provider = new GoogleAuthProvider();
 
-const adminEmails = [
-  "everteestudio@gmail.com"
-];
+const adminEmails = ["everteestudio@gmail.com"];
+let allParticipants = [];
+let qrScanner = null;
 
-window.loginGoogle = async function () {
+// ========== UI HELPERS ==========
+window.showLoading = function(show) {
+  document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
+};
+
+window.showToast = function(message, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  const icons = { success: 'fa-check-circle', error: 'fa-xmark-circle', info: 'fa-info-circle', warning: 'fa-triangle-exclamation' };
+  const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500', warning: 'bg-yellow-500' };
+  
+  toast.className = `toast ${colors[type]} text-white px-6 py-4 rounded-2xl shadow-lg flex items-center gap-3 min-w-[300px]`;
+  toast.innerHTML = `<i class="fa-solid ${icons[type]} text-xl"></i><span class="font-medium">${message}</span>`;
+  
+  container.appendChild(toast);
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+};
+
+window.toggleDarkMode = function() {
+  document.documentElement.classList.toggle('dark');
+  const icon = document.getElementById('darkModeIcon');
+  icon.className = document.documentElement.classList.contains('dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+};
+
+window.copyToClipboard = function(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Nomor rekening disalin!', 'success'));
+};
+
+// ========== AUTH ==========
+window.loginGoogle = async function() {
+  showLoading(true);
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    showToast(error.message, 'error');
+  } finally {
+    showLoading(false);
+  }
+};
+
+window.logoutUser = async function() {
+  showLoading(true);
+  await signOut(auth);
+  location.reload();
+};
+
+// ========== PARTICIPANT FUNCTIONS ==========
+window.saveRegistration = async function(event) {
+  event.preventDefault();
+  showLoading(true);
+  
+  const user = auth.currentUser;
+  const checkQuery = query(collection(db, "participants"), where("uid", "==", user.uid));
+  const checkSnapshot = await getDocs(checkQuery);
+  
+  if (!checkSnapshot.empty) {
+    showToast("Anda sudah mendaftar sebelumnya!", "warning");
+    showLoading(false);
+    return;
+  }
 
   try {
-
-    await signInWithPopup(auth, provider);
-
+    await addDoc(collection(db, "participants"), {
+      uid: user.uid,
+      email: user.email,
+      name: document.getElementById("fullname").value,
+      age: parseInt(document.getElementById("age").value),
+      school: document.getElementById("school").value,
+      phone: document.getElementById("phone").value,
+      jersey: document.getElementById("jersey").value,
+      paymentStatus: "pending",
+      bibNumber: "",
+      jerseyTaken: false,
+      createdAt: new Date()
+    });
+    showToast("Pendaftaran berhasil disimpan!", "success");
+    setTimeout(() => location.reload(), 1500);
   } catch (error) {
-
-    alert(error.message);
-
+    showToast("Gagal menyimpan: " + error.message, "error");
+    showLoading(false);
   }
-
-};
-
-window.logoutUser = async function () {
-
-  await signOut(auth);
-
-  location.reload();
-
-};
-
-onAuthStateChanged(auth, async (user) => {
-
-  if (!user) {
-
-    document.getElementById("loginSection").classList.remove("hidden");
-
-    document.getElementById("participantSection").classList.add("hidden");
-
-    document.getElementById("adminSection").classList.add("hidden");
-
-    return;
-
-  }
-
-  document.getElementById("loginSection").classList.add("hidden");
-
-  if (adminEmails.includes(user.email)) {
-
-    document.getElementById("adminSection").classList.remove("hidden");
-
-    loadParticipants();
-
-    startQRScanner();
-
-  } else {
-
-    document.getElementById("participantSection").classList.remove("hidden");
-
-    document.getElementById("userEmail").innerText = user.email;
-
-    loadMyTicket();
-
-  }
-
-});
-
-window.saveRegistration = async function (event) {
-
-  event.preventDefault();
-
-  const user = auth.currentUser;
-
-  const checkQuery = query(
-    collection(db, "participants"),
-    where("uid", "==", user.uid)
-  );
-
-  const checkSnapshot = await getDocs(checkQuery);
-
-  if (!checkSnapshot.empty) {
-
-    alert("Anda sudah mendaftar");
-
-    return;
-
-  }
-
-  await addDoc(collection(db, "participants"), {
-
-    uid: user.uid,
-    email: user.email,
-
-    name: document.getElementById("fullname").value,
-
-    age: document.getElementById("age").value,
-
-    school: document.getElementById("school").value,
-
-    phone: document.getElementById("phone").value,
-
-    jersey: document.getElementById("jersey").value,
-
-    paymentStatus: "pending",
-
-    bibNumber: "",
-
-    jerseyTaken: false,
-
-    createdAt: new Date()
-
-  });
-
-  alert("Pendaftaran berhasil disimpan");
-
-  location.reload();
-
 };
 
 async function loadMyTicket() {
-
   const user = auth.currentUser;
-
-  const q = query(
-    collection(db, "participants"),
-    where("uid", "==", user.uid)
-  );
-
+  const q = query(collection(db, "participants"), where("uid", "==", user.uid));
   const snapshot = await getDocs(q);
-
+  
   snapshot.forEach((docData) => {
-
     const data = docData.data();
-
-    document.getElementById("ticketCard").classList.remove("hidden");
-
-    document.getElementById("statusText").innerText = data.paymentStatus;
-
-    document.getElementById("bibText").innerText = data.bibNumber || "Menunggu Approval";
-
-    document.getElementById("ticketName").innerText = data.name;
-
-    if (data.bibNumber) {
-
-      document.getElementById("qrcode").innerHTML = "";
-
-      new QRCode(document.getElementById("qrcode"), {
-        text: data.bibNumber,
-        width: 200,
-        height: 200
-      });
-
+    
+    // Update stats
+    document.getElementById("statStatus").innerText = data.paymentStatus.toUpperCase();
+    document.getElementById("statStatus").className = `text-lg font-bold ${data.paymentStatus === 'approved' ? 'text-green-600' : 'text-yellow-600'}`;
+    document.getElementById("statJersey").innerText = data.jersey;
+    document.getElementById("statBib").innerText = data.bibNumber || "Menunggu";
+    
+    // Show/hide form based on registration
+    if (data.paymentStatus) {
+      document.getElementById("registrationForm").classList.add("hidden");
+      document.getElementById("ticketCard").classList.remove("hidden");
+      
+      // Fill ticket
+      const badge = document.getElementById("ticketBadge");
+      badge.innerText = data.paymentStatus;
+      badge.className = `px-3 py-1 rounded-full text-xs font-bold uppercase ${
+        data.paymentStatus === 'approved' 
+          ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' 
+          : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+      }`;
+      
+      document.getElementById("ticketName").innerText = data.name;
+      document.getElementById("ticketSchool").innerText = data.school;
+      document.getElementById("ticketJersey").innerText = data.jersey;
+      document.getElementById("ticketJerseyStatus").innerHTML = data.jerseyTaken 
+        ? '<span class="text-green-600"><i class="fa-solid fa-check"></i> Sudah Diambil</span>' 
+        : '<span class="text-yellow-600"><i class="fa-solid fa-clock"></i> Belum Diambil</span>';
+      document.getElementById("ticketBib").innerText = data.bibNumber || "Menunggu Approval";
+      
+      // Generate QR
+      if (data.bibNumber) {
+        document.getElementById("qrcode").innerHTML = "";
+        new QRCode(document.getElementById("qrcode"), {
+          text: data.bibNumber,
+          width: 200,
+          height: 200,
+          colorDark: "#1e293b",
+          colorLight: "#ffffff",
+        });
+      }
     }
-
   });
-
 }
 
+// ========== ADMIN FUNCTIONS ==========
 async function loadParticipants() {
-
+  showLoading(true);
   const tbody = document.getElementById("participantTable");
-
   tbody.innerHTML = "";
-
-  const snapshot = await getDocs(collection(db, "participants"));
-
+  
+  const snapshot = await getDocs(query(collection(db, "participants"), orderBy("createdAt", "desc")));
+  allParticipants = [];
   let counter = 1;
-
+  
+  let stats = { total: 0, pending: 0, approved: 0, jersey: 0 };
+  
   snapshot.forEach((participant) => {
-
     const data = participant.data();
-
-    const row = `
-
-      <tr class="border-b">
-
-        <td class="p-4">${data.name}</td>
-
-        <td class="p-4">${data.school}</td>
-
-        <td class="p-4">${data.jersey}</td>
-
-        <td class="p-4">${data.paymentStatus}</td>
-
-        <td class="p-4">${data.bibNumber || '-'} </td>
-
-        <td class="p-4 flex gap-2">
-
-          <button
-            onclick="approveParticipant('${participant.id}', ${counter})"
-            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl"
-          >
-            Approve
-          </button>
-
-          <button
-            onclick="markJerseyTaken('${participant.id}')"
-            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl"
-          >
-            Jersey
-          </button>
-
-        </td>
-
-      </tr>
-
-    `;
-
-    tbody.innerHTML += row;
-
+    data.id = participant.id;
+    data.no = counter;
+    allParticipants.push(data);
+    
+    stats.total++;
+    if (data.paymentStatus === 'pending') stats.pending++;
+    if (data.paymentStatus === 'approved') stats.approved++;
+    if (data.jerseyTaken) stats.jersey++;
+    
     counter++;
-
   });
-
+  
+  // Update stats
+  document.getElementById("adminTotal").innerText = stats.total;
+  document.getElementById("adminPending").innerText = stats.pending;
+  document.getElementById("adminApproved").innerText = stats.approved;
+  document.getElementById("adminJersey").innerText = stats.jersey;
+  
+  renderTable(allParticipants);
+  showLoading(false);
 }
 
-window.approveParticipant = async function (id, number) {
+function renderTable(data) {
+  const tbody = document.getElementById("participantTable");
+  const emptyState = document.getElementById("emptyState");
+  tbody.innerHTML = "";
+  
+  if (data.length === 0) {
+    emptyState.classList.remove("hidden");
+    return;
+  }
+  emptyState.classList.add("hidden");
+  
+  data.forEach((p) => {
+    const statusColors = {
+      pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
+      approved: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+      rejected: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+    };
+    
+    const row = `
+      <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+        <td class="p-4 text-sm text-slate-600 dark:text-slate-400">${p.no}</td>
+        <td class="p-4">
+          <div class="font-bold text-slate-800 dark:text-white">${p.name}</div>
+          <div class="text-xs text-slate-400">${p.email}</div>
+        </td>
+        <td class="p-4 text-sm text-slate-600 dark:text-slate-400">${p.school}</td>
+        <td class="p-4 text-sm text-slate-600 dark:text-slate-400">
+          <a href="https://wa.me/62${p.phone.replace(/^0/, '')}" target="_blank" class="text-green-600 hover:underline">
+            <i class="fa-brands fa-whatsapp"></i> ${p.phone}
+          </a>
+        </td>
+        <td class="p-4">
+          <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300">${p.jersey}</span>
+        </td>
+        <td class="p-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase ${statusColors[p.paymentStatus] || statusColors.pending}">${p.paymentStatus}</span>
+        </td>
+        <td class="p-4 font-mono font-bold text-slate-800 dark:text-white">${p.bibNumber || '-'}</td>
+        <td class="p-4">
+          <div class="flex gap-2 flex-wrap">
+            ${p.paymentStatus === 'pending' ? `
+              <button onclick="approveParticipant('${p.id}', ${p.no})" class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all hover:shadow-md">
+                <i class="fa-solid fa-check"></i> Approve
+              </button>
+              <button onclick="rejectParticipant('${p.id}')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all hover:shadow-md">
+                <i class="fa-solid fa-xmark"></i> Tolak
+              </button>
+            ` : `
+              <button onclick="resetParticipant('${p.id}')" class="bg-slate-500 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all hover:shadow-md">
+                <i class="fa-solid fa-rotate-left"></i> Reset
+              </button>
+            `}
+            <button onclick="markJerseyTaken('${p.id}', ${!p.jerseyTaken})" class="${p.jerseyTaken ? 'bg-slate-400' : 'bg-orange-500 hover:bg-orange-600'} text-white px-3 py-2 rounded-lg text-xs font-bold transition-all hover:shadow-md">
+              <i class="fa-solid fa-shirt"></i> ${p.jerseyTaken ? 'Batal' : 'Jersey'}
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+    tbody.innerHTML += row;
+  });
+}
 
+window.filterParticipants = function() {
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const status = document.getElementById("filterStatus").value;
+  const jersey = document.getElementById("filterJersey").value;
+  
+  const filtered = allParticipants.filter(p => {
+    const matchSearch = !search || 
+      p.name.toLowerCase().includes(search) || 
+      p.school.toLowerCase().includes(search) || 
+      (p.bibNumber && p.bibNumber.toLowerCase().includes(search));
+    const matchStatus = status === 'all' || p.paymentStatus === status;
+    const matchJersey = jersey === 'all' || p.jersey === jersey;
+    return matchSearch && matchStatus && matchJersey;
+  });
+  
+  renderTable(filtered);
+};
+
+window.approveParticipant = async function(id, number) {
+  showLoading(true);
   const bib = `RUN-${String(number).padStart(4, '0')}`;
-
   await updateDoc(doc(db, "participants", id), {
-
     paymentStatus: "approved",
-
     bibNumber: bib
-
   });
-
-  alert("Peserta berhasil diapprove");
-
+  showToast(`Peserta diapprove! BIB: ${bib}`, "success");
   loadParticipants();
-
 };
 
-window.markJerseyTaken = async function (id) {
-
+window.rejectParticipant = async function(id) {
+  if (!confirm("Yakin ingin menolak peserta ini?")) return;
+  showLoading(true);
   await updateDoc(doc(db, "participants", id), {
-
-    jerseyTaken: true
-
+    paymentStatus: "rejected",
+    bibNumber: ""
   });
-
-  alert("Jersey sudah diambil");
-
+  showToast("Peserta ditolak", "warning");
+  loadParticipants();
 };
 
-function startQRScanner() {
+window.resetParticipant = async function(id) {
+  if (!confirm("Yakin ingin reset status peserta ini?")) return;
+  showLoading(true);
+  await updateDoc(doc(db, "participants", id), {
+    paymentStatus: "pending",
+    bibNumber: "",
+    jerseyTaken: false
+  });
+  showToast("Status peserta direset", "info");
+  loadParticipants();
+};
 
-  if (!document.getElementById("reader")) return;
+window.markJerseyTaken = async function(id, status) {
+  showLoading(true);
+  await updateDoc(doc(db, "participants", id), { jerseyTaken: status });
+  showToast(status ? "Jersey ditandai diambil" : "Jersey dibatalkan", "success");
+  loadParticipants();
+};
 
-  function onScanSuccess(decodedText) {
+window.exportToCSV = function() {
+  const headers = ["No", "Nama", "Email", "Umur", "Sekolah", "Telepon", "Jersey", "Status", "BIB", "Jersey Diambil", "Tanggal Daftar"];
+  const rows = allParticipants.map(p => [
+    p.no, p.name, p.email, p.age, p.school, p.phone, p.jersey, 
+    p.paymentStatus, p.bibNumber || '-', p.jerseyTaken ? 'Ya' : 'Tidak',
+    p.createdAt ? new Date(p.createdAt.toDate()).toLocaleString('id-ID') : '-'
+  ]);
+  
+  const csv = [headers, ...rows].map(r => r.map(x => `"${x}"`).join(",")).join("\n");
+  const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `peserta-funrun-2026-${new Date().toISOString().split('T')[0]}.csv`;
+  link.click();
+  showToast("Data berhasil diexport!", "success");
+};
 
-    alert("QR Peserta: " + decodedText);
+// ========== QR SCANNER ==========
+window.startQRScanner = function() {
+  const reader = document.getElementById("reader");
+  reader.innerHTML = "";
+  
+  if (qrScanner) {
+    qrScanner.clear();
+  }
+  
+  qrScanner = new Html5QrcodeScanner("reader", {
+    fps: 10,
+    qrbox: { width: 250, height: 250 },
+    aspectRatio: 1
+  });
+  
+  qrScanner.render((decodedText) => {
+    handleScanSuccess(decodedText);
+  });
+};
 
+window.stopQRScanner = function() {
+  if (qrScanner) {
+    qrScanner.clear();
+    qrScanner = null;
+  }
+  document.getElementById("reader").innerHTML = '<p class="text-slate-500 text-sm">Klik "Mulai Scan" untuk memulai</p>';
+};
+
+function handleScanSuccess(decodedText) {
+  const resultDiv = document.getElementById("scanResult");
+  const participant = allParticipants.find(p => p.bibNumber === decodedText);
+  
+  const now = new Date().toLocaleString('id-ID');
+  let html = '';
+  
+  if (participant) {
+    const isValid = participant.paymentStatus === 'approved';
+    html = `
+      <div class="p-4 rounded-xl ${isValid ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'}">
+        <div class="flex items-center gap-3 mb-2">
+          <i class="fa-solid ${isValid ? 'fa-check-circle text-green-600' : 'fa-xmark-circle text-red-600'} text-2xl"></i>
+          <div>
+            <p class="font-bold text-slate-800 dark:text-white">${participant.name}</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">${participant.school}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          <div class="bg-white dark:bg-slate-700 p-2 rounded-lg">
+            <span class="text-slate-400 text-xs">BIB</span>
+            <p class="font-bold text-slate-800 dark:text-white">${participant.bibNumber}</p>
+          </div>
+          <div class="bg-white dark:bg-slate-700 p-2 rounded-lg">
+            <span class="text-slate-400 text-xs">Jersey</span>
+            <p class="font-bold text-slate-800 dark:text-white">${participant.jersey} ${participant.jerseyTaken ? '✓' : '○'}</p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">${now}</p>
+      </div>
+    `;
+    showToast(isValid ? `Check-in berhasil: ${participant.name}` : `Peserta belum diapprove!`, isValid ? 'success' : 'warning');
+  } else {
+    html = `
+      <div class="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-triangle-exclamation text-red-600 text-2xl"></i>
+          <div>
+            <p class="font-bold text-red-700 dark:text-red-400">QR Tidak Valid!</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">${decodedText}</p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">${now}</p>
+      </div>
+    `;
+    showToast("QR Code tidak ditemukan!", "error");
+  }
+  
+  resultDiv.innerHTML = html + resultDiv.innerHTML;
+}
+
+// ========== AUTH STATE ==========
+onAuthStateChanged(auth, async (user) => {
+  // Check dark mode preference
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.documentElement.classList.add('dark');
+    document.getElementById('darkModeIcon').className = 'fa-solid fa-sun';
+  }
+  
+  if (!user) {
+    document.getElementById("loginSection").classList.remove("hidden");
+    document.getElementById("participantSection").classList.add("hidden");
+    document.getElementById("adminSection").classList.add("hidden");
+    return;
   }
 
-  const scanner = new Html5QrcodeScanner(
-    "reader",
-    {
-      fps: 10,
-      qrbox: 250
-    }
-  );
-
-  scanner.render(onScanSuccess);
-
-}
+  document.getElementById("loginSection").classList.add("hidden");
+  
+  if (adminEmails.includes(user.email)) {
+    document.getElementById("adminSection").classList.remove("hidden");
+    await loadParticipants();
+  } else {
+    document.getElementById("participantSection").classList.remove("hidden");
+    document.getElementById("userEmail").innerText = user.email;
+    await loadMyTicket();
+  }
+});
 
 </script>
-
 </body>
 </html>
