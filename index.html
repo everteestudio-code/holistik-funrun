@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Holistik Fest Fun Run 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top left, #f8fafc, #f1f5f9);
+        }
+        .glow-orange {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+        }
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- Top Decorative Bar -->
+    <div class="h-2 bg-gradient-to-r from-blue-600 via-pink-500 to-orange-500 w-full"></div>
+
+    <!-- Header / Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-br from-blue-600 to-orange-500 p-2.5 rounded-2xl text-white shadow-md">
+                    <i class="fa-solid fa-running text-2xl animate-pulse"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent">HOLISTIK FEST</span>
+                    <span class="block text-xs font-bold text-slate-400 tracking-widest uppercase">FUN RUN 2026</span>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="scrollToSection('info-section')" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition">Informasi</button>
+                <button onclick="scrollToSection('form-section')" class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-orange-500 text-white text-sm font-semibold rounded-xl hover:opacity-95 transition shadow-sm glow-orange">Daftar Sekarang</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Hero & Announcement -->
+        <section class="mb-12 text-center md:text-left">
+            <div class="grid md:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-100 relative overflow-hidden">
+                <div class="absolute -right-16 -top-16 w-64 h-64 bg-orange-100 rounded-full blur-3xl opacity-60"></div>
+                <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-60"></div>
+                
+                <div class="md:col-span-7 z-10">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-orange-100 text-orange-600 mb-4 uppercase tracking-wider">
+                        <i class="fa-solid fa-sparkles"></i> Event Terbesar Purworejo
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4">
+                        PENDAFTARAN HOLISTIK <span class="text-blue-600">FEST</span> <span class="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">FUN RUN</span> 2026
+                    </h1>
+                    <p class="text-lg text-slate-600 font-medium mb-6">
+                        Hallo adik-adik Runners Purworejo! Pendaftaran dibuka khusus untuk adik siswa <strong class="text-blue-600">SD</strong> & <strong class="text-orange-500">SMP</strong>. Mari sehat bersama di rute 3 KM!
+                    </p>
+                    
+                    <!-- Quick Specs -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="text-center md:text-left">
+                            <span class="block text-xs text-slate-400 font-bold uppercase">Tanggal</span>
+                            <span class="text-sm font-bold text-slate-800">Minggu, 21 Juni '26</span>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <span class="block text-xs text-slate-400 font-bold uppercase">Waktu</span>
+                            <span class="text-sm font-bold text-slate-800">06:00 WIB</span>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <span class="block text-xs text-slate-400 font-bold uppercase">Rute</span>
+                            <span class="text-sm font-bold text-slate-800">3 Kilo Meter</span>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <span class="block text-xs text-slate-400 font-bold uppercase">Biaya</span>
+                            <span class="text-sm font-bold text-orange-500">Rp 100.000,-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Countdown Timer -->
+                <div class="md:col-span-5 z-10 flex flex-col justify-center items-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden w-full">
+                    <div class="absolute top-0 right-0 p-2 opacity-10">
+                        <i class="fa-solid fa-hourglass-half text-9xl"></i>
+                    </div>
+                    <span class="text-xs font-bold text-orange-400 tracking-wider uppercase mb-3">Sisa Waktu Pendaftaran</span>
+                    <div class="flex gap-4 mb-4">
+                        <div class="text-center">
+                            <span id="days" class="block text-3xl font-black bg-white/10 px-3 py-2 rounded-xl">00</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase mt-1 block">Hari</span>
+                        </div>
+                        <div class="text-center">
+                            <span id="hours" class="block text-3xl font-black bg-white/10 px-3 py-2 rounded-xl">00</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase mt-1 block">Jam</span>
+                        </div>
+                        <div class="text-center">
+                            <span id="minutes" class="block text-3xl font-black bg-white/10 px-3 py-2 rounded-xl">00</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase mt-1 block">Menit</span>
+                        </div>
+                        <div class="text-center">
+                            <span id="seconds" class="block text-3xl font-black bg-white/10 px-3 py-2 rounded-xl">00</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase mt-1 block">Detik</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 text-center">Ayo daftar sebelum kuota jersey eksklusif habis!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information details and Jersey Info -->
+        <section id="info-section" class="grid lg:grid-cols-12 gap-8 mb-12">
+            
+            <!-- Details Card -->
+            <div class="lg:col-span-5 bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm"><i class="fa-solid fa-circle-info"></i></span> Detail Pelaksanaan
+                    </h3>
+
+                    <!-- Detail Items -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-slate-400"><i class="fa-solid fa-calendar-days text-lg"></i></div>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-400 uppercase">Hari & Tanggal</span>
+                                <span class="font-bold text-slate-800">Minggu, 21 Juni 2026</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-slate-400"><i class="fa-solid fa-clock text-lg"></i></div>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-400 uppercase">Waktu Kumpul</span>
+                                <span class="font-bold text-slate-800">06.00 WIB s/d Selesai</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-slate-400"><i class="fa-solid fa-route text-lg"></i></div>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-400 uppercase">Rute Track</span>
+                                <span class="font-bold text-slate-800">3 KM (Sangat Aman untuk Anak)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-slate-400"><i class="fa-solid fa-map-location-dot text-lg"></i></div>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-400 uppercase">Start & Finish</span>
+                                <span class="font-bold text-slate-800">Lapangan Garnisun, Purworejo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-100 my-6">
+
+                    <!-- Bank Details -->
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-orange-100 rounded-2xl p-5 mb-6">
+                        <h4 class="text-sm font-bold text-orange-800 uppercase tracking-wider mb-3"><i class="fa-solid fa-wallet mr-1"></i> Informasi Pembayaran</h4>
+                        <p class="text-sm text-slate-600 mb-2">Biaya Pendaftaran: <strong class="text-orange-600">Rp 100.000,-</strong></p>
+                        <p class="text-xs text-slate-500 mb-4">Silakan transfer biaya pendaftaran ke rekening berikut:</p>
+                        
+                        <div class="bg-white p-3 rounded-xl border border-orange-200/60 flex items-center justify-between">
+                            <div>
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase">Bank Jateng</span>
+                                <strong id="bank-acc" class="text-slate-800 tracking-wide">3020269366</strong>
+                                <span class="block text-xs text-slate-600 font-medium">a.n. DHEVITA ERVRIANA</span>
+                            </div>
+                            <button onclick="copyToClipboard('3020269366')" class="bg-orange-100 hover:bg-orange-200 text-orange-700 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy"></i> Salin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-2xl p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <span class="block text-xs text-slate-400 font-bold">Informasi & Konfirmasi</span>
+                            <span class="text-sm font-bold text-slate-800">CP: Afy (082135832356)</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6282135832356" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-brands fa-whatsapp"></i> Chat
+                    </a>
+                </div>
+            </div>
+
+            <!-- Jersey Card -->
+            <div class="lg:col-span-7 bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm"><i class="fa-solid fa-shirt"></i></span> Desain Jersey Eksklusif
+                </h3>
+                <p class="text-sm text-slate-500 mb-6">Pilih ukuran dan sesuaikan kategori jersey sesuai dengan tingkat sekolah siswa (SD / SMP).</p>
+                
+                <!-- Jersey Visual Container -->
+                <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                    <!-- SD Jersey Graphic -->
+                    <div class="border border-slate-100 hover:border-blue-200 transition bg-slate-50/50 p-4 rounded-2xl text-center relative group">
+                        <span class="absolute top-3 left-3 bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">KATEGORI SD</span>
+                        
+                        <!-- Custom SVG Jersey SD representation -->
+                        <div class="h-56 flex items-center justify-center my-2">
+                            <svg class="w-full h-full max-h-48 drop-shadow-md group-hover:scale-105 transition duration-300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Collar/Sleeves Base -->
+                                <path d="M40 70 L20 100 L45 115 L60 90 L60 180 L140 180 L140 90 L155 115 L180 100 L160 70 L130 55 C130 55 100 70 70 55 Z" fill="#2563EB"/>
+                                <!-- Main Body Colorful Pattern -->
+                                <path d="M60 90 L140 90 L140 180 L60 180 Z" fill="#FFFFFF"/>
+                                <!-- Top/Collar details -->
+                                <path d="M80 57 C90 75 110 75 120 57" stroke="#EA580C" stroke-width="6" fill="none"/>
+                                <!-- Side colorful triangles -->
+                                <path d="M60 140 L85 180 L60 180 Z" fill="#F43F5E"/>
+                                <path d="M140 140 L115 180 L140 180 Z" fill="#EAB308"/>
+                                <path d="M60 90 L85 90 L60 120 Z" fill="#0EA5E9"/>
+                                <path d="M140 90 L115 90 L140 120 Z" fill="#10B981"/>
+                                <!-- Text "HOLISTIK FEST" -->
+                                <rect x="65" y="110" width="70" height="25" rx="3" fill="#0F172A" opacity="0.9"/>
+                                <text x="100" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">HOLISTIK</text>
+                                <text x="100" y="131" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="7.5" fill="#F97316" text-anchor="middle">FEST 2026</text>
+                                <text x="100" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="6" fill="#64748B" text-anchor="middle">KATEGORI SD</text>
+                            </svg>
+                        </div>
+                        <div class="text-sm font-bold text-slate-700">Warna Putih & Biru Ceria</div>
+                        <span class="text-xs text-slate-400">Pola warna warni, semangat masa depan</span>
+                    </div>
+
+                    <!-- SMP Jersey Graphic -->
+                    <div class="border border-slate-100 hover:border-orange-200 transition bg-slate-50/50 p-4 rounded-2xl text-center relative group">
+                        <span class="absolute top-3 left-3 bg-orange-100 text-orange-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">KATEGORI SMP</span>
+                        
+                        <!-- Custom SVG Jersey SMP representation -->
+                        <div class="h-56 flex items-center justify-center my-2">
+                            <svg class="w-full h-full max-h-48 drop-shadow-md group-hover:scale-105 transition duration-300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="smpGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#1E3A8A"/>
+                                        <stop offset="50%" stop-color="#3B82F6"/>
+                                        <stop offset="100%" stop-color="#EA580C"/>
+                                    </linearGradient>
+                                </defs>
+                                <!-- Body & Sleeve base -->
+                                <path d="M40 70 L20 100 L45 115 L60 90 L60 180 L140 180 L140 90 L155 115 L180 100 L160 70 L130 55 C130 55 100 70 70 55 Z" fill="url(#smpGrad)"/>
+                                <!-- Top Collar -->
+                                <path d="M80 57 C90 72 110 72 120 57" stroke="#EA580C" stroke-width="4" fill="none"/>
+                                <!-- Text "HOLISTIK FEST" -->
+                                <rect x="65" y="110" width="70" height="25" rx="3" fill="#FFFFFF" opacity="0.95"/>
+                                <text x="100" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="7.5" fill="#1E3A8A" text-anchor="middle">HOLISTIK</text>
+                                <text x="100" y="131" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="7.5" fill="#EA580C" text-anchor="middle">FEST 2026</text>
+                                <text x="100" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" font-size="6" fill="#F8FAFC" text-anchor="middle">KATEGORI SMP</text>
+                            </svg>
+                        </div>
+                        <div class="text-sm font-bold text-slate-700">Gradasi Biru-Oranye Premium</div>
+                        <span class="text-xs text-slate-400">Elegan, dinamis, bersemangat membara</span>
+                    </div>
+                </div>
+
+                <!-- Sizes specs table -->
+                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Panduan Standar Ukuran Jersey</h4>
+                    <div class="grid grid-cols-5 gap-2 text-center text-xs font-bold">
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-100">
+                            <span class="block text-[10px] text-slate-400">S</span>
+                            <span class="text-slate-700">Lebar: 42cm</span>
+                        </div>
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-100">
+                            <span class="block text-[10px] text-slate-400">M</span>
+                            <span class="text-slate-700">Lebar: 45cm</span>
+                        </div>
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-100">
+                            <span class="block text-[10px] text-slate-400">L</span>
+                            <span class="text-slate-700">Lebar: 48cm</span>
+                        </div>
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-100">
+                            <span class="block text-[10px] text-slate-400">XL</span>
+                            <span class="text-slate-700">Lebar: 51cm</span>
+                        </div>
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-100">
+                            <span class="block text-[10px] text-slate-400">XXL</span>
+                            <span class="text-slate-700">Lebar: 54cm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Status / Track Pendaftaran -->
+        <section class="mb-12 bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-users text-9xl"></i>
+            </div>
+            <div class="max-w-2xl">
+                <h3 class="text-xl font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-magnifying-glass text-orange-500"></i> Cek Status Pendaftaran Anda</h3>
+                <p class="text-xs text-slate-400 mb-6">Sudah pernah mendaftar? Masukkan Nomor Telepon Anda atau Orang Tua untuk memeriksa status pendaftaran & cetak kembali kartu peserta.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="search-phone" placeholder="Contoh: 082135832356" class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 text-white placeholder-slate-500 text-sm">
+                    <button onclick="checkRegistrationStatus()" class="bg-gradient-to-r from-orange-500 to-pink-500 hover:opacity-95 text-white font-bold py-3 px-6 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-search"></i> Cek Status
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Form Section -->
+        <section id="form-section" class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-orange-500 p-6 md:p-8 text-white relative">
+                <div class="absolute right-6 top-6 opacity-10">
+                    <i class="fa-solid fa-id-card text-7xl"></i>
+                </div>
+                <h2 class="text-2xl font-extrabold mb-1">Formulir Pendaftaran Peserta</h2>
+                <p class="text-sm text-blue-100">Silakan isi formulir pendaftaran ini dengan data yang benar dan lengkap sesuai identitas diri adik-adik ya.</p>
+            </div>
+
+            <!-- Form Progress Indicator -->
+            <div class="flex border-b border-slate-100">
+                <div id="step-tab-1" class="flex-1 py-4 text-center border-b-2 border-blue-600 font-bold text-sm text-blue-600 flex items-center justify-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs flex items-center justify-center font-black">1</span>
+                    <span class="hidden sm:inline">Data Diri</span>
+                </div>
+                <div id="step-tab-2" class="flex-1 py-4 text-center border-b-2 border-transparent font-medium text-sm text-slate-400 flex items-center justify-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 text-xs flex items-center justify-center font-black">2</span>
+                    <span class="hidden sm:inline">Ukuran Jersey</span>
+                </div>
+                <div id="step-tab-3" class="flex-1 py-4 text-center border-b-2 border-transparent font-medium text-sm text-slate-400 flex items-center justify-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 text-xs flex items-center justify-center font-black">3</span>
+                    <span class="hidden sm:inline">Wali & Pembayaran</span>
+                </div>
+            </div>
+
+            <!-- Registration Form Element -->
+            <form id="fun-run-form" onsubmit="handleFormSubmit(event)" class="p-6 md:p-10 space-y-8">
+                
+                <!-- STEP 1: Personal Data -->
+                <div id="step-content-1" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Nama Lengkap -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-user"></i></span>
+                                <input type="text" id="fullname" required placeholder="Contoh: Ahmad Fauzan" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Umur -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Umur <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-cake-candles"></i></span>
+                                <input type="number" id="age" required min="5" max="18" placeholder="Contoh: 12" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                            <span class="text-[10px] text-slate-400 mt-1 block">Khusus siswa SD dan SMP (Kisaran umur 5 - 18 tahun).</span>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Jenis Kelamin -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Jenis Kelamin <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="border-2 border-slate-200 rounded-xl p-3 flex items-center gap-3 cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-blue-600 [&:has(input:checked)]:bg-blue-50">
+                                    <input type="radio" name="gender" value="LAKI-LAKI" required class="w-4 h-4 text-blue-600">
+                                    <span class="text-sm font-bold text-slate-700"><i class="fa-solid fa-mars text-blue-500 mr-1.5"></i> Laki-Laki</span>
+                                </label>
+                                <label class="border-2 border-slate-200 rounded-xl p-3 flex items-center gap-3 cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-pink-600 [&:has(input:checked)]:bg-pink-50">
+                                    <input type="radio" name="gender" value="Perempuan" required class="w-4 h-4 text-pink-600">
+                                    <span class="text-sm font-bold text-slate-700"><i class="fa-solid fa-venus text-pink-500 mr-1.5"></i> Perempuan</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Asal Sekolah -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Asal Sekolah <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-school"></i></span>
+                                <input type="text" id="school" required placeholder="Contoh: SD Negeri 1 Purworejo" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Alamat Rumah -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Alamat Rumah <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-house-user"></i></span>
+                                <input type="text" id="address" required placeholder="Jalan Raya No. 45, Kecamatan Purworejo" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Nomor Telepon (WA Aktif) -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nomor Telepon / WhatsApp <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-phone"></i></span>
+                                <input type="tel" id="student_phone" required placeholder="Contoh: 08123456789" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button type="button" onclick="goToStep(2)" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-xl transition flex items-center gap-2 shadow-md">
+                            Lanjut Ke Ukuran Jersey <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Jersey Selection -->
+                <div id="step-content-2" class="hidden space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-4 uppercase tracking-wide text-center">Pilih Kategori & Ukuran Jersey <span class="text-red-500">*</span></label>
+                        
+                        <!-- Jersey Category Visual Selection -->
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <label class="border-2 border-slate-100 rounded-2xl p-4 flex flex-col items-center justify-between cursor-pointer hover:border-blue-300 hover:bg-slate-50/50 transition relative [&:has(input:checked)]:border-blue-600 [&:has(input:checked)]:bg-blue-50/30">
+                                <input type="radio" name="jersey_category" value="SD" required class="absolute top-4 right-4 w-5 h-5 text-blue-600">
+                                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mb-3">SD</div>
+                                <span class="block text-base font-bold text-slate-800">Kategori Jersey SD</span>
+                                <span class="block text-xs text-slate-500 text-center mt-1">Desain penuh warna ceria, putih beraksen biru dan oranye merah muda.</span>
+                            </label>
+
+                            <label class="border-2 border-slate-100 rounded-2xl p-4 flex flex-col items-center justify-between cursor-pointer hover:border-orange-300 hover:bg-slate-50/50 transition relative [&:has(input:checked)]:border-orange-600 [&:has(input:checked)]:bg-orange-50/30">
+                                <input type="radio" name="jersey_category" value="SMP" required class="absolute top-4 right-4 w-5 h-5 text-orange-600">
+                                <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center text-2xl font-bold mb-3">SMP</div>
+                                <span class="block text-base font-bold text-slate-800">Kategori Jersey SMP</span>
+                                <span class="block text-xs text-slate-500 text-center mt-1">Desain gradasi biru-oranye premium dengan pola energetik futuristik.</span>
+                            </label>
+                        </div>
+
+                        <!-- Ukuran Jersey -->
+                        <label class="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide">Pilih Ukuran Jersey <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                            <label class="border-2 border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-orange-500 [&:has(input:checked)]:bg-orange-50">
+                                <input type="radio" name="jersey_size" value="S" required class="sr-only">
+                                <span class="block text-lg font-black text-slate-800">S</span>
+                                <span class="text-[10px] text-slate-400">Lebar: 42 cm</span>
+                            </label>
+                            <label class="border-2 border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-orange-500 [&:has(input:checked)]:bg-orange-50">
+                                <input type="radio" name="jersey_size" value="M" required class="sr-only">
+                                <span class="block text-lg font-black text-slate-800">M</span>
+                                <span class="text-[10px] text-slate-400">Lebar: 45 cm</span>
+                            </label>
+                            <label class="border-2 border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-orange-500 [&:has(input:checked)]:bg-orange-50">
+                                <input type="radio" name="jersey_size" value="L" required class="sr-only">
+                                <span class="block text-lg font-black text-slate-800">L</span>
+                                <span class="text-[10px] text-slate-400">Lebar: 48 cm</span>
+                            </label>
+                            <label class="border-2 border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-orange-500 [&:has(input:checked)]:bg-orange-50">
+                                <input type="radio" name="jersey_size" value="XL" required class="sr-only">
+                                <span class="block text-lg font-black text-slate-800">XL</span>
+                                <span class="text-[10px] text-slate-400">Lebar: 51 cm</span>
+                            </label>
+                            <label class="border-2 border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50 transition [&:has(input:checked)]:border-orange-500 [&:has(input:checked)]:bg-orange-50">
+                                <input type="radio" name="jersey_size" value="XXL" required class="sr-only">
+                                <span class="block text-lg font-black text-slate-800">XXL</span>
+                                <span class="text-[10px] text-slate-400">Lebar: 54 cm</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-between">
+                        <button type="button" onclick="goToStep(1)" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> Kembali
+                        </button>
+                        <button type="button" onclick="goToStep(3)" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-xl transition flex items-center gap-2 shadow-md">
+                            Lanjut Ke Pembayaran <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Parent Info & Payment Upload -->
+                <div id="step-content-3" class="hidden space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Nama Orang Tua -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nama Orang Tua <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-users-viewfinder"></i></span>
+                                <input type="text" id="parent_name" required placeholder="Nama lengkap Ayah / Ibu" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Nomor Telepon Orang Tua -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nomor Telepon Orang Tua <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                                <input type="tel" id="parent_phone" required placeholder="Contoh: 08123456789" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-800 transition text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-100">
+
+                    <!-- Bukti Pembayaran -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Bukti Pembayaran <span class="text-red-500">*</span></label>
+                        <p class="text-xs text-slate-400 mb-3">Harap unggah bukti transfer ke BANK JATENG: 3020269366 sebesar Rp 100.000,- (Maksimal ukuran file 10MB)</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 items-center">
+                            <!-- Drag and drop zone -->
+                            <div id="drop-zone" class="border-2 border-dashed border-slate-200 hover:border-orange-500 rounded-2xl p-6 text-center bg-slate-50 hover:bg-slate-100/50 transition cursor-pointer relative">
+                                <input type="file" id="payment_proof" required accept="image/*" onchange="previewPaymentProof(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                                <div class="space-y-2">
+                                    <div class="text-4xl text-slate-400"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                    <div class="text-sm font-bold text-slate-700">Pilih berkas atau seret ke sini</div>
+                                    <div class="text-xs text-slate-400">Mendukung format gambar PNG, JPG atau JPEG</div>
+                                </div>
+                            </div>
+
+                            <!-- Preview container -->
+                            <div class="border border-slate-100 rounded-2xl p-4 min-h-[160px] flex flex-col items-center justify-center bg-slate-50 relative">
+                                <div id="preview-placeholder" class="text-center text-slate-400 text-xs">
+                                    <i class="fa-regular fa-image text-3xl mb-2 block"></i>
+                                    Pratinjau bukti transfer akan muncul di sini
+                                </div>
+                                <div id="preview-container" class="hidden w-full h-full flex flex-col items-center">
+                                    <img id="payment-img-preview" src="#" alt="Bukti Transfer" class="max-h-36 rounded-lg object-contain shadow-md mb-2">
+                                    <button type="button" onclick="removeUploadedFile()" class="bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-lg transition"><i class="fa-solid fa-trash mr-1"></i> Hapus File</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms agreement checkbox -->
+                    <label class="flex items-start gap-3 p-4 bg-slate-50 border border-slate-100 rounded-xl cursor-pointer">
+                        <input type="checkbox" required class="w-5 h-5 rounded text-blue-600 mt-0.5">
+                        <span class="text-xs text-slate-500 leading-relaxed">Saya menyatakan bahwa seluruh data yang diisi di atas adalah benar dan sah. Saya menyetujui syarat & ketentuan pelaksanaan Holistik Fest Fun Run 2026.</span>
+                    </label>
+
+                    <div class="pt-4 flex justify-between">
+                        <button type="button" onclick="goToStep(2)" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> Kembali
+                        </button>
+                        <button type="submit" class="px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-500 hover:opacity-95 text-white font-extrabold rounded-xl transition flex items-center gap-2 shadow-md glow-orange">
+                            <i class="fa-solid fa-file-invoice-dollar"></i> Selesaikan & Kirim Pendaftaran
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Success Modal showing generated Ticket -->
+    <div id="success-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl border border-slate-100 overflow-hidden transform transition-all duration-300">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-6 text-white text-center">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold">Pendaftaran Berhasil!</h3>
+                <p class="text-sm text-emerald-100 mt-1">Data Anda berhasil disimpan di sistem Holistik Fest</p>
+            </div>
+
+            <!-- Modal Content (Cetak Tiket) -->
+            <div class="p-6 md:p-8 space-y-6">
+                <!-- Printable Ticket Area -->
+                <div id="printable-ticket" class="bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-2xl p-5 relative overflow-hidden shadow-inner">
+                    <!-- Ticket Notch / Ribbons -->
+                    <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full border border-slate-200"></div>
+                    <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full border border-slate-200"></div>
+                    
+                    <div class="text-center pb-4 border-b border-dashed border-slate-200">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest">KARTU PESERTA RESMI</span>
+                        <h4 class="text-lg font-black text-slate-800 uppercase tracking-tight">HOLISTIK FEST FUN RUN 2026</h4>
+                    </div>
+
+                    <!-- Ticket Details -->
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-2 py-5 text-xs">
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Nomor BIB / Peserta</span>
+                            <strong id="ticket-bib" class="text-base text-blue-600 font-black">HTK-2026-001</strong>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Nama Lengkap</span>
+                            <strong id="ticket-name" class="text-sm text-slate-800 font-bold">ZACKY ALIFAN</strong>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Sekolah / Umur</span>
+                            <strong id="ticket-school" class="text-slate-800 font-bold">SMP N 1 Purworejo (14 Th)</strong>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Kategori & Jersey</span>
+                            <strong id="ticket-jersey" class="text-slate-800 font-bold">SMP - Ukuran XL</strong>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Jalur Rute</span>
+                            <strong class="text-slate-800 font-bold">3 KILO METER</strong>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase">Tanggal Event</span>
+                            <strong class="text-slate-800 font-bold">Minggu, 21 Juni 2026</strong>
+                        </div>
+                    </div>
+
+                    <!-- Barcode/QR Mockup -->
+                    <div class="pt-4 border-t border-dashed border-slate-200 flex flex-col items-center justify-center">
+                        <div class="bg-white p-2 rounded-lg border border-slate-200 mb-1">
+                            <svg id="ticket-barcode" class="h-10 w-44"></svg>
+                        </div>
+                        <span class="text-[9px] font-mono text-slate-400 tracking-widest uppercase">Verified Registration</span>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-xl text-xs space-y-1">
+                    <strong class="block"><i class="fa-solid fa-circle-exclamation mr-1"></i> Langkah Selanjutnya:</strong>
+                    <p>1. Kirim foto bukti pembayaran ini ke WhatsApp CP (082135832356) jika status belum terverifikasi.</p>
+                    <p>2. Simpan atau Screenshot Kartu Peserta ini untuk penukaran Jersey & Nomor BIB di lokasi acara.</p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-6 py-4 flex gap-3 justify-end border-t border-slate-100">
+                <button onclick="closeSuccessModal()" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-800 transition">Tutup</button>
+                <button onclick="printTicket()" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:opacity-95 text-white text-sm font-bold rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-print"></i> Cetak / Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast component (instead of standard browser alert) -->
+    <div id="toast-notification" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 text-white rounded-2xl px-6 py-4 shadow-2xl border border-slate-800 max-w-sm flex items-start gap-3 transform translate-y-10 opacity-0 transition-all duration-300">
+        <div id="toast-icon" class="text-lg mt-0.5"></div>
+        <div>
+            <h4 id="toast-title" class="font-bold text-sm">Pemberitahuan</h4>
+            <p id="toast-desc" class="text-xs text-slate-400 mt-1"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-20 border-t-4 border-orange-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/10 p-2 rounded-xl text-white">
+                        <i class="fa-solid fa-running text-xl text-orange-500"></i>
+                    </div>
+                    <span class="font-black text-white tracking-tight">HOLISTIK FEST 2026</span>
+                </div>
+                <p class="text-xs leading-relaxed text-slate-500">
+                    Ajang lari santai (fun run) tahunan di Kabupaten Purworejo yang dirancang khusus untuk memotivasi anak-anak usia SD dan SMP agar aktif berolahraga dengan ceria.
+                </p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">Tautan Cepat</h4>
+                <ul class="text-xs space-y-2">
+                    <li><a href="#" onclick="scrollToSection('info-section')" class="hover:text-white transition">Detail Pelaksanaan</a></li>
+                    <li><a href="#" onclick="scrollToSection('info-section')" class="hover:text-white transition">Panduan Pembayaran</a></li>
+                    <li><a href="#" id="view-jersey-lnk" onclick="scrollToSection('info-section')" class="hover:text-white transition">Ukuran Jersey</a></li>
+                    <li><a href="#" onclick="scrollToSection('form-section')" class="hover:text-white transition">Formulir Pendaftaran</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">Lokasi Pelaksanaan</h4>
+                <p class="text-xs leading-relaxed text-slate-500 flex gap-2">
+                    <i class="fa-solid fa-map-pin text-orange-500 mt-0.5"></i>
+                    Lapangan Garnisun<br>
+                    Kec. Purworejo, Kabupaten Purworejo<br>
+                    Jawa Tengah, Indonesia
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-slate-800 text-center text-xs text-slate-600">
+            <p>&copy; 2026 Holistik Fest Fun Run Purworejo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Core Script Logic -->
+    <script>
+        // Simulasi Database Pendaftar disimpan di LocalStorage
+        let registrationsDB = JSON.parse(localStorage.getItem('holistik_runners_db')) || [];
+
+        // Inisialisasi awal saat load
+        window.onload = function() {
+            // Set up countdown timer (Target: Minggu, 21 Juni 2026 06:00:00 WIB)
+            initCountdownTimer();
+            // Generate mock Barcode
+            generateBarcodeSVG("HTK-2026-MOCK");
+        }
+
+        // Copy Text Function
+        function copyToClipboard(text) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            showToast("Berhasil Disalin!", "Nomor rekening Bank Jateng disalin ke papan klip.", "success");
+        }
+
+        // Toast Notification System (Menggantikan alert() browser)
+        function showToast(title, desc, type = "info") {
+            const toast = document.getElementById("toast-notification");
+            const iconContainer = document.getElementById("toast-icon");
+            const titleEl = document.getElementById("toast-title");
+            const descEl = document.getElementById("toast-desc");
+
+            // Set Type Styling
+            if(type === "success") {
+                iconContainer.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-500"></i>';
+                toast.className = toast.className.replace(/border-slate-800|border-red-800/, "border-emerald-800");
+            } else if(type === "error") {
+                iconContainer.innerHTML = '<i class="fa-solid fa-circle-xmark text-red-500"></i>';
+                toast.className = toast.className.replace(/border-slate-800|border-emerald-800/, "border-red-800");
+            } else {
+                iconContainer.innerHTML = '<i class="fa-solid fa-circle-info text-blue-500"></i>';
+                toast.className = toast.className.replace(/border-emerald-800|border-red-800/, "border-slate-800");
+            }
+
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+
+            // Show Toast
+            toast.classList.remove("hidden");
+            setTimeout(() => {
+                toast.classList.remove("translate-y-10", "opacity-0");
+            }, 50);
+
+            // Hide Toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.add("translate-y-10", "opacity-0");
+                setTimeout(() => {
+                    toast.classList.add("hidden");
+                }, 300);
+            }, 4000);
+        }
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Multi-step Navigation Form
+        function goToStep(step) {
+            // Validate previous steps before going forward
+            if (step === 2) {
+                const fullname = document.getElementById('fullname').value;
+                const age = document.getElementById('age').value;
+                const gender = document.querySelector('input[name="gender"]:checked');
+                const school = document.getElementById('school').value;
+                const address = document.getElementById('address').value;
+                const student_phone = document.getElementById('student_phone').value;
+
+                if (!fullname || !age || !gender || !school || !address || !student_phone) {
+                    showToast("Formulir Belum Lengkap", "Harap isi semua kolom wajib (*) sebelum melanjutkan.", "error");
+                    return;
+                }
+            } else if (step === 3) {
+                const category = document.querySelector('input[name="jersey_category"]:checked');
+                const size = document.querySelector('input[name="jersey_size"]:checked');
+
+                if (!category || !size) {
+                    showToast("Pilih Jersey", "Harap tentukan Kategori Jersey dan Ukuran yang pas untuk Anda.", "error");
+                    return;
+                }
+            }
+
+            // Hide all steps
+            document.getElementById('step-content-1').classList.add('hidden');
+            document.getElementById('step-content-2').classList.add('hidden');
+            document.getElementById('step-content-3').classList.add('hidden');
+
+            // Reset tab styles
+            resetTabStyle('step-tab-1');
+            resetTabStyle('step-tab-2');
+            resetTabStyle('step-tab-3');
+
+            // Show current step content
+            document.getElementById(`step-content-${step}`).classList.remove('hidden');
+
+            // Highlight current step tab
+            const activeTab = document.getElementById(`step-tab-${step}`);
+            activeTab.classList.remove('border-transparent', 'text-slate-400');
+            activeTab.classList.add('border-blue-600', 'text-blue-600', 'font-bold');
+            
+            const activeBadge = activeTab.querySelector('span');
+            activeBadge.classList.remove('bg-slate-100', 'text-slate-600');
+            activeBadge.classList.add('bg-blue-100', 'text-blue-600');
+
+            // Scroll to form header top nicely
+            scrollToSection('form-section');
+        }
+
+        function resetTabStyle(tabId) {
+            const tab = document.getElementById(tabId);
+            tab.className = "flex-1 py-4 text-center border-b-2 border-transparent font-medium text-sm text-slate-400 flex items-center justify-center gap-2";
+            const badge = tab.querySelector('span');
+            badge.className = "w-6 h-6 rounded-full bg-slate-100 text-slate-600 text-xs flex items-center justify-center font-black";
+        }
+
+        // Preview Proof of Payment
+        function previewPaymentProof(event) {
+            const input = event.target;
+            const preview = document.getElementById('payment-img-preview');
+            const placeholder = document.getElementById('preview-placeholder');
+            const container = document.getElementById('preview-container');
+
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+
+                // Validate file size (10MB limit)
+                if (file.size > 10 * 1024 * 1024) {
+                    showToast("Ukuran File Terlalu Besar", "Harap unggah bukti pembayaran dengan ukuran di bawah 10MB.", "error");
+                    input.value = "";
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    placeholder.classList.add('hidden');
+                    container.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Remove uploaded Payment proof
+        function removeUploadedFile() {
+            const input = document.getElementById('payment_proof');
+            const placeholder = document.getElementById('preview-placeholder');
+            const container = document.getElementById('preview-container');
+            
+            input.value = "";
+            placeholder.classList.remove('hidden');
+            container.classList.add('hidden');
+        }
+
+        // Handle Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Additional security validations
+            const parentName = document.getElementById('parent_name').value;
+            const parentPhone = document.getElementById('parent_phone').value;
+            const hasFile = document.getElementById('payment_proof').files.length > 0;
+
+            if (!parentName || !parentPhone || !hasFile) {
+                showToast("Pengisian Kurang Lengkap", "Silakan periksa kembali nama orang tua, telepon wali, dan pastikan bukti transfer telah terunggah.", "error");
+                return;
+            }
+
+            // Generate BIB Number
+            const bibNumber = "HTK-" + Math.floor(100000 + Math.random() * 90000);
+
+            // Fetch registration data
+            const registration = {
+                bib: bibNumber,
+                name: document.getElementById('fullname').value,
+                age: document.getElementById('age').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                school: document.getElementById('school').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('student_phone').value,
+                jersey_category: document.querySelector('input[name="jersey_category"]:checked').value,
+                jersey_size: document.querySelector('input[name="jersey_size"]:checked').value,
+                parent_name: parentName,
+                parent_phone: parentPhone,
+                date: new Date().toLocaleDateString('id-ID')
+            };
+
+            // Save inside Simulated Local Storage DB
+            registrationsDB.push(registration);
+            localStorage.setItem('holistik_runners_db', JSON.stringify(registrationsDB));
+
+            // Populate Ticket Modal
+            document.getElementById('ticket-bib').textContent = registration.bib;
+            document.getElementById('ticket-name').textContent = registration.name.toUpperCase();
+            document.getElementById('ticket-school').textContent = `${registration.school} (${registration.age} Thn)`;
+            document.getElementById('ticket-jersey').textContent = `${registration.jersey_category} - Ukuran ${registration.jersey_size}`;
+
+            // Generate ticket barcode SVG content dynamically
+            generateBarcodeSVG(registration.bib);
+
+            // Reset Form back to Step 1
+            document.getElementById('fun-run-form').reset();
+            removeUploadedFile();
+            goToStep(1);
+
+            // Show Success Modal
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+
+        // Close Success Modal
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            showToast("Pendaftaran Tersimpan", "Silakan cetak tiket pendaftaran dari dashboard jika sewaktu-waktu dibutuhkan.", "success");
+        }
+
+        // Check registration status from DB
+        function checkRegistrationStatus() {
+            const searchPhone = document.getElementById('search-phone').value.trim();
+            if(!searchPhone) {
+                showToast("Pencarian Kosong", "Harap masukkan nomor telepon peserta atau wali untuk mencari data.", "error");
+                return;
+            }
+
+            // Find matching registrations (searching by student phone or parent phone)
+            const match = registrationsDB.find(r => r.phone === searchPhone || r.parent_phone === searchPhone);
+
+            if(match) {
+                // Populate ticket and show
+                document.getElementById('ticket-bib').textContent = match.bib;
+                document.getElementById('ticket-name').textContent = match.name.toUpperCase();
+                document.getElementById('ticket-school').textContent = `${match.school} (${match.age} Thn)`;
+                document.getElementById('ticket-jersey').textContent = `${match.jersey_category} - Ukuran ${match.jersey_size}`;
+                
+                generateBarcodeSVG(match.bib);
+                document.getElementById('success-modal').classList.remove('hidden');
+                showToast("Pencarian Berhasil", `Sistem mendeteksi 1 data pendaftar atas nama ${match.name}.`, "success");
+            } else {
+                showToast("Pendaftar Tidak Ditemukan", "Sistem tidak menemukan pendaftar dengan nomor telepon tersebut. Pastikan format nomor yang dimasukkan benar.", "error");
+            }
+        }
+
+        // Print/Save Ticket Functionality
+        function printTicket() {
+            const printContent = document.getElementById('printable-ticket').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            // Dynamic Styling for printing beautifully
+            const printWindow = window.open('', '', 'height=500, width=600');
+            printWindow.document.write('<html><head><title>Cetak Tiket Holistik Fest Fun Run 2026</title>');
+            printWindow.document.write('<link href="https://cdn.tailwindcss.com" rel="stylesheet">');
+            printWindow.document.write('<style>body { font-family: sans-serif; padding: 20px; }</style>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write('<div class="max-w-md mx-auto border-2 border-slate-300 p-6 rounded-2xl bg-slate-50 relative">');
+            printWindow.document.write(printContent);
+            printWindow.document.write('</div>');
+            printWindow.document.write('<script>window.onload = function() { window.print(); window.close(); }</' + 'script>');
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+        }
+
+        // SVG Barcode Generator (Pure JS Representation)
+        function generateBarcodeSVG(code) {
+            const svg = document.getElementById('ticket-barcode');
+            svg.innerHTML = ''; // Clear previous
+            
+            // Draw simple aesthetic vector-style barcode
+            let xOffset = 10;
+            const barcodeColors = ["#000", "#FFF", "#000", "#000", "#FFF", "#000", "#FFF", "#000", "#000", "#FFF", "#000", "#FFF"];
+            
+            // Dynamic generation based on simple ASCII representation
+            for (let i = 0; i < 28; i++) {
+                const width = (i % 3 === 0) ? 4 : (i % 2 === 0) ? 2 : 1;
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", xOffset);
+                rect.setAttribute("y", "5");
+                rect.setAttribute("width", width);
+                rect.setAttribute("height", "30");
+                rect.setAttribute("fill", (i % 4 === 0) ? "#FFF" : "#0F172A");
+                svg.appendChild(rect);
+                xOffset += width;
+            }
+            
+            // Add text element under the barcode lines
+            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", "90");
+            text.setAttribute("y", "45");
+            text.setAttribute("font-family", "monospace");
+            text.setAttribute("font-size", "10");
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("fill", "#64748B");
+            text.textContent = code;
+            svg.appendChild(text);
+        }
+
+        // Interactive Countdown Timer
+        function initCountdownTimer() {
+            // Target Event Date (June 21, 2026 06:00:00)
+            const targetDate = new Date("June 21, 2026 06:00:00").getTime();
+
+            const timerInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                // Time calculations
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update UI elements
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+                // If event starts, clear timer
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById("days").innerText = "00";
+                    document.getElementById("hours").innerText = "00";
+                    document.getElementById("minutes").innerText = "00";
+                    document.getElementById("seconds").innerText = "00";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
